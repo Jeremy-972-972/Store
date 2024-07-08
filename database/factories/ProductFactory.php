@@ -18,7 +18,7 @@ class ProductFactory extends Factory
     {
         return [
             'category_id' => fake()->randomDigitNotZero(),
-            'name' => fake()->words(),
+            'name' => fake()->word(),
             'description' => fake()->sentence(20),
             'price' => fake()-> randomFloat(2, 20, 200),
 

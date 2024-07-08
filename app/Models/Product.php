@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Models\Category;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Product extends Model
@@ -14,7 +15,7 @@ class Product extends Model
     /**
      * Get the user that owns the Product
      *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     * @return BelongsTo
      */
     public function category(): BelongsTo
     {

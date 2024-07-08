@@ -16,9 +16,9 @@ class CategoryFactory extends Factory
      */
     public function definition(): array
     {
-        $name = fake()->words(7, true);
+        $name = fake()->word();
         return [
-            'name' => fake()->words() ,//créer des mots au pif
+            'name' => $name,//créer des mots au pif
             'image' => fake()->imageURL(640,480 , $name , true),//créer des images
         ];
     }
