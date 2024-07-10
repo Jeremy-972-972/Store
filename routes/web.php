@@ -19,7 +19,7 @@ Route::middleware('auth')->group(function () {
 });
 //affichage des produits
 Route::get('/',  [ProductController::class, 'index'])->name('home');
-Route::get('/product/{id}',  [ProductController::class, 'show'])->name('product.detail');
+Route::get('/product/{product}',  [ProductController::class, 'show'])->name('product.detail');
 Route::get('/product/category/{id}',  [ProductController::class, 'productlistBycategory'])->name('product.category');
 
 require __DIR__.'/auth.php';

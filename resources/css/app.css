@@ -1,3 +1,42 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* .container{ */
+    /* display: flex; */
+    /* faire une colonne */
+    /* flex-direction: column;  */
+    /* flex:1; */
+    /* height: 70vh; */
+    /* background-color: aquamarine; */
+    /* bouge la box de gauche à droite */
+    /* justify-content: space-around;  */
+/* bouge la box de haut en bas */
+/* align-items: center; */
+    
+
+
+    /* .box{
+
+        width: 50px;
+        height: 50px;
+        display: flex;
+        background-color: orange; */
+         /* bouge le contenu de la box de gauche à droite */
+        /* justify-content: center;
+        /* bouge le contenu de la box de haut en bas */
+        /* align-items: center; */
+    
+    
+
+
+
+    /* } */
+    /* @media only screen and (max_width:400px) {
+
+        .container{
+            flex-direction: column;
+        } */
+        
+    /* } */
+

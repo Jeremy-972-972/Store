@@ -1,11 +1,11 @@
 <header>
 
-    <ul>
-        <li>
+    <ul class="flex flex-row">
+        <li class="px-10">
             <a href="@route('product')">Acceuil</a>
         </li>
-        <li>
+        <li class="px-10">
             <a href="@route('dashboard')"> Mon Compte</a>
         </li>
-        <li>Panier</li>
+        <li class="px-10">Panier</li>
 </header>
