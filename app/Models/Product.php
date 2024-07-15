@@ -13,6 +13,8 @@ class Product extends Model
     // ce qu'on peut modifier
     protected $fillable = ['category_id', 'name', 'description', 'price', ' images'];
 
+    protected $casts = ['images' => 'array',];
+
     /**
      * Get the user that owns the Product
      *

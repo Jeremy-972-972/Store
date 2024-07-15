@@ -8,6 +8,7 @@ use App\Models\Category;
 use Filament\Forms\Form;
 use Filament\Tables\Table;
 use Filament\Resources\Resource;
+use Filament\Tables\Columns\ImageColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Forms\Components\TextInput;
 use Illuminate\Database\Eloquent\Builder;
@@ -25,7 +26,9 @@ class CategoryResource extends Resource
     {
         return $form
             ->schema([
-                TextInput::make('name'),
+                Forms\Components\TextInput::make('name')->required(),
+                Forms\Components\FileUpload::make('image'), // pour telecharger des fichiers
+                // TextInput::make('name'),
             ]);
     }
 
@@ -33,10 +36,14 @@ class CategoryResource extends Resource
     {
         return $table
             ->columns([
-                TextColumn::make('id'),
+                ImageColumn::make('image')
+                                            ->circular()
+                                            ->stacked(),
                 TextColumn::make('name'),
-                TextColumn::make('created_at'),
-                TextColumn::make('updated_at'),
+                // TextColumn::make('id'),
+                // TextColumn::make('name'),
+                // TextColumn::make('created_at'),
+                // TextColumn::make('updated_at'),
             ])
             ->filters([
                 //
