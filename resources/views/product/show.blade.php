@@ -6,7 +6,7 @@
     <div class="relative flex w-full items-center overflow-hidden bg-white px-4 pb-8 pt-14 shadow-2xl sm:px-6 sm:pt-8 md:p-6 lg:p-8">
       <div class="grid w-full grid-cols-1 items-start gap-x-6 gap-y-8 sm:grid-cols-12 lg:gap-x-8">
         <div class="aspect-h-3 aspect-w-2 overflow-hidden rounded-lg bg-gray-100 sm:col-span-4 lg:col-span-5">
-          <img src="https://tailwindui.com/img/ecommerce-images/product-quick-preview-02-detail.jpg" alt="Two each of gray, white, and black shirts arranged on table." class="object-cover object-center">
+          <img src="https://psblog.fr/wp-content/uploads/2020/07/marvels-spider-man-ps5-jaquette-789x1024.jpg" alt="Two each of gray, white, and black shirts arranged on table." class="object-cover object-center">
         </div>
         <div class="sm:col-span-8 lg:col-span-7">
           <h2 class="text-2xl font-bold text-gray-900 sm:pr-12">{{$product->name}}</h2>
@@ -147,8 +147,10 @@
       </div>
     </div>
   </div>
+  
 
   <x-product-card :products="$products" />
+  
 
 {{-- <div class="container">
     <div class="box">1</div>

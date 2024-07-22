@@ -5,6 +5,7 @@ use App\Http\Controllers\PanierController;
 use App\Http\Controllers\FavorisController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\CommandeController;
 
 // Route::get('/', function () {
 //     return view('welcome');
@@ -32,6 +33,9 @@ Route::get('/panier/remove/{panier}',  [PanierController::class, 'remove'])->nam
 Route::middleware('auth')->group(function () {
 Route::get('/favoris',  [FavorisController::class, 'index'])->name('favoris.lister');
 Route::get('/favoris/edit/{product}',  [FavorisController::class, 'edit'])->name('favoris.edit');
+//Commande
+Route::get('/commande',  [CommandeController::class, 'index'])->name('commande.lister');
+Route::get('/commande/create/',  [CommandeController::class, 'create'])->name('commande.create');
 
 });
 

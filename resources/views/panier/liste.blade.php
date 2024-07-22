@@ -15,7 +15,7 @@
     
     <li class="flexjustify-between gap-x-6 py-5">
         <div class="flex min-w-0 gap-x-4">
-            <img src="https://assets-prd.ignimgs.com/2021/06/12/elden-ring-button-03-1623460560664.jpg" alt="" class="h-12 w-12 flex-none rounded-full bg-gray-50">
+            <img src="https://psblog.fr/wp-content/uploads/2020/07/marvels-spider-man-ps5-jaquette-789x1024.jpg" alt="" class="h-12 w-12 flex-none rounded-full bg-gray-50">
      
             <div class="min-w-0 flex-auto">
                 <p class= "text-sm.font-semibold leading-6 text-gray-900">{{$panier->product->name}}</p>
@@ -39,7 +39,7 @@ Panier vide......
 
 <li class="flexjustify-between gap-x-6 py-5">
     <div class="flex min-w-0 gap-x-4">
-        <img src="" alt="" class="h-12 w-12 flex-none rounded-full bg-gray-50">
+        {{-- <img src="" alt="" class="h-12 w-12 flex-none rounded-full bg-gray-50"> --}}
         <div class="min-w-0 flex-auto">
             <p class= "text-sm.font-semibold leading-6 text-gray-900"></p>
     
@@ -50,8 +50,10 @@ Panier vide......
     </div>
 
     <div class="hidden shrink-0 sm:flex sm:flew-col sm:items-end">
-        <p class="text-sm leading-6 text-gray-900">total  {{$total}}</p>
-        <a href="" class="mt-6 flex w-full items-center justify-center rounded-md border border-transparent bg-indigo-600 px-8 py-3 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">Commander</a>
+        <p class="text-sm leading-6 text-gray-900">total     {{$total}}</p>
+        
+        
+        <a href="{{route('commande.create')}}" class="mt-6 flex w-full items-center justify-center rounded-md border border-transparent bg-indigo-600 px-8 py-3 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">Commander</a>
     </div>
 
 </li>
