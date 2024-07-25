@@ -39,4 +39,11 @@
         } */
         
     /* } */
-
+    /* Fond d'ecran */
+body{
+    background-image: url("https://th.bing.com/th/id/OIP.RT4yUWmbKpkYsm50C52B3wHaFj?w=197&h=180&c=7&r=0&o=5&dpr=1.5&pid=1.7");
+background-position: center;
+background-repeat: no-repeat;
+background-size: cover;
+}
+   

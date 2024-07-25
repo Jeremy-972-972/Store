@@ -6,13 +6,14 @@ use App\Models\Panier;
 use App\Models\Commande;
 use App\Models\CommandeItem;
 use Illuminate\Http\Request;
+use Illuminate\Container\Attributes\Config;
 
 class CommandeController extends Controller
 {
 
     public function index(){
 
-        $commandes = Commande::where('user_id' , auth()->user()->id)->orderBy('id , desc')->get();
+        $commandes = Commande::where('user_id' , auth()->user()->id)->orderBy('id' , 'desc')->get();
 
         return view('commande.lister' , compact('commandes'));
     }
@@ -53,9 +54,71 @@ $total=0;
         $commande->update(['numero'=>9999 ,'total' => $total]);
         $commande->save();
         //vider le panier
-        $paniers = Panier::where('user_id', auth()->user()->id)->delete();
-        return 'commander';
+        //s$paniers = Panier::where('user_id', auth()->user()->id)->delete();
+
+        $urlPaiement = $this->stripeCheckout($total, $commande->id);
+        
+        return redirect($urlPaiement);
 
     }
+
+    public function stripeCheckout($total, $commandeId)
+    {
+        //parametrage de l'api
+        $stripe = new \Stripe\StripeClient(env('STRIPE_SECRET'));
+        //url de confirmation de paiement
+        $redirectUrl = route('commande.success') . '?session_id={CHECKOUT_SESSION_ID}';
+        //creation de la session de paiement stripe
+        $response =  $stripe->checkout->sessions->create([
+            'success_url' => $redirectUrl,
+            'payment_method_types' => ['link', 'card'],
+            'customer_email' => auth()->user()->email,
+            'client_reference_id' => $commandeId,
+            'line_items' => [
+                [
+                    'price_data'  => [
+                        'product_data' => [
+                            'name' => $commandeId,
+                        ],
+                        'unit_amount'  => 100 * $total,
+                        'currency'     => 'USD',
+                    ],
+                    'quantity'    => 1
+                ],
+            ],
+            'mode' => 'payment',
+            'allow_promotion_codes' => false
+        ]);
+        //generation de l'url de paiement
+        return $response['url'];
+    }
+
+    //controlle et confirmation du paiement
+    public function success(Request $request){
+        $stripe = new \Stripe\StripeClient(env('STRIPE_SECRET'));
+
+        $session = $stripe->checkout->session->retrieve($request->session_id);
+        //dd(info($session));
+
+        //info($session->payment_intent);
+        $commande=Commande::find($session->client_reference_id);
+        $commande->update(['numero'=> $session->payment_intent]);
+
+        return redirect(route('commande.lister'));
+    }
+
+    public function webhook(){
+        //dd($request);
+
+        if($request->objet =="checkout.session" &&
+            $request->payment_statues === 'paid' &&
+            $request->status ==='complete'){
+
+            $commande=update(['numero'=> $requet->data["object"]]);
+
+        return'ok';
+    }
   
+}
+
 }

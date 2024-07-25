@@ -36,8 +36,11 @@ Route::get('/favoris/edit/{product}',  [FavorisController::class, 'edit'])->name
 //Commande
 Route::get('/commande',  [CommandeController::class, 'index'])->name('commande.lister');
 Route::get('/commande/create/',  [CommandeController::class, 'create'])->name('commande.create');
+Route::get('/commande/success/',  [CommandeController::class, 'success'])->name('commande.success');
 
 });
+// route commande pour url de stripe non sécurisé
+Route::get('/commande/webhook/',  [CommandeController::class, 'webhook'])->name('commande.webhook');
 
 //affichage des produits
 Route::get('/',  [ProductController::class, 'index'])->name('home');
