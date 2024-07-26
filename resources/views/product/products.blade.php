@@ -1,6 +1,11 @@
 {{-- ça copie le layout --}}
-@extends('layouts.store') 
-@section('content')                
+@extends('layouts.shop') 
+@section('content')
+<x-category-list/>
+<x-product-list :products="$products" />
+
+@php
+    /*                 
 <ul class=" p-10 flex flex-1 gap-4">
     @foreach ($categories as $category )
     <li class="bg-slate-300 p-1 rounded">
@@ -13,5 +18,6 @@
 <x-product-card :products="$products" />
 <!--Lien de pagination -->
 {{$products->links()}}
-   
+*/
+@endphp 
 @endsection

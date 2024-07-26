@@ -17,7 +17,7 @@
 </head>
 <body>
     
-    @include('layouts.store.header')
+    @include('layouts.shore.header')
     
 
     @yield('content')
